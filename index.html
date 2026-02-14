@@ -9,6 +9,9 @@
     <meta name="author" content="Beleza Saudável">
     <meta name="robots" content="index, follow">
     
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="3a14ff1fbeb171e8">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://beleza-saudavel.vercel.app/">
@@ -987,6 +990,61 @@
             border-top: 1px solid var(--lilac-light);
         }
         
+        /* Chatbot Input */
+        .chatbot-input-container {
+            padding: 12px 16px;
+            border-top: 1px solid var(--lilac-light);
+            display: flex;
+            gap: 8px;
+            background: var(--gray-50);
+        }
+        
+        .chatbot-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid var(--lilac-light);
+            border-radius: 25px;
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .chatbot-input:focus {
+            border-color: var(--primary);
+        }
+        
+        .chatbot-input::placeholder {
+            color: var(--gray-600);
+        }
+        
+        .chatbot-send-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--lilac-dark));
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .chatbot-send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+        }
+        
+        .chatbot-send-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+            margin-left: 2px;
+        }
+        
         .chat-option {
             background: var(--lilac-light);
             color: var(--primary);
@@ -1291,7 +1349,7 @@
                     <img src="images/Polivitaminico-Depoimento-03.jpeg" alt="Resultado Polivitamínico" class="testimonial-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22350%22 height=%22280%22%3E%3Crect fill=%22%23ede9fe%22 width=%22350%22 height=%22280%22/%3E%3Ctext fill=%22%239333ea%22 x=%22175%22 y=%22140%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2216%22%3EResultado 3%3C/text%3E%3C/svg%3E'">
                     <div class="testimonial-content">
                         <span class="testimonial-product">Polivitamínico da Iza</span>
-                        <p class="testimonial-text">"Meu cabelo também ficou mais fortes!"</p>
+                        <p class="testimonial-text">"Minhas unhas também ficaram mais fortes!"</p>
                     </div>
                 </div>
                 
@@ -1414,7 +1472,7 @@
                     <p>Estamos prontos para tirar todas as suas dúvidas e ajudar você a escolher o produto ideal para suas necessidades.</p>
                     <div class="contact-links">
                         <a href="https://www.instagram.com/comunidade_beautiful?igsh=ZzRkNjJxdWVucTF2" target="_blank" rel="noopener noreferrer" class="contact-link">
-                            <span class="icon instagram"><img src="images/beleza-saudavel.jpeg" alt="Beleza Saudável Logo" class="logo-img" onerror="this.style.display='none'"></span>
+                            <span class="icon instagram">📷</span>
                             <div>
                                 <strong>Instagram</strong>
                                 <p style="font-size: 13px; color: var(--gray-600);">@comunidade_beautiful</p>
@@ -1431,7 +1489,7 @@
                 </div>
                 <div class="contact-info reveal">
                     <h3>Horário de Atendimento</h3>
-                    <p>Atendemos de segunda a sexta-feira, das 8h às 18h, e aos sábados das 8h às 12h.</p>
+                    <p>Atendemos de segunda a sexta-feira, das 08h às 18h, e aos sábados das 08h às 12h.</p>
                     <p style="margin-top: 16px;"><strong>Resposta rápida garantida!</strong></p>
                     <p style="color: var(--gray-600); font-size: 14px; margin-top: 8px;">Respondemos em até 1 hora durante o horário comercial.</p>
                 </div>
@@ -1444,6 +1502,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
+                    <img src="images/beleza-saudavel.jpeg" alt="Beleza Saudável" style="width: 80px; height: 80px; border-radius: 50%; margin-bottom: 16px; border: 3px solid var(--lilac);" onerror="this.style.display='none'">
                     <h3>Beleza Saudável</h3>
                     <p>Cuidado natural para você. Produtos 100% naturais selecionados para realçar sua beleza e promover saúde com resultados comprovados.</p>
                 </div>
@@ -1502,8 +1561,15 @@
             <button class="chat-option" onclick="sendChatMessage('Quero saber sobre os produtos')">Produtos</button>
             <button class="chat-option" onclick="sendChatMessage('Quero saber sobre preços')">Preços</button>
             <button class="chat-option" onclick="sendChatMessage('Como funciona o frete?')">Frete</button>
-            <button class="chat-option" onclick="sendChatMessage('Polievitaminico')">Polievitaminico</button>
             <button class="chat-option" onclick="sendChatMessage('Quero falar com um atendente')">Atendente</button>
+        </div>
+        <div class="chatbot-input-container">
+            <input type="text" class="chatbot-input" id="chat-input" placeholder="Digite sua mensagem..." onkeypress="handleKeyPress(event)">
+            <button class="chatbot-send-btn" onclick="sendUserMessage()" aria-label="Enviar">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -1591,6 +1657,24 @@
             }, 500);
             
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        
+        // Send user message from input field
+        function sendUserMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            
+            if (message) {
+                sendChatMessage(message);
+                input.value = '';
+            }
+        }
+        
+        // Handle Enter key press
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendUserMessage();
+            }
         }
         
         // Smooth scroll for navigation
