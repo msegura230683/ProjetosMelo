@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beleza Saudável - Cuidado natural para você</title>
+    <meta name="description" content="Descubra produtos selecionados para realçar sua beleza natural e promover saúde capilar com resultados comprovados.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: white;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+        
+        /* Header */
+        header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .logo-section { display: flex; align-items: center; gap: 12px; }
+        .logo-img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
+        .logo-text h1 { font-size: 22px; font-weight: bold; color: #1f2937; font-family: cursive; }
+        .logo-text p { font-size: 14px; color: #ec4899; }
+        
+        .social-links { display: flex; gap: 12px; }
+        .social-links a {
+            padding: 10px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+        .social-links a:hover { transform: scale(1.1); }
+        .instagram-btn { background: linear-gradient(to right, #8b5cf6, #ec4899, #f97316); box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        .whatsapp-btn { background: #22c55e; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        
+        /* Hero */
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(to bottom, #fdf2f8, white, #fdf2f8);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fce7f3;
+            color: #be185d;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        
+        .hero h2 { font-size: 32px; font-weight: bold; color: #1f2937; margin-bottom: 16px; }
+        .hero h2 span { color: #ec4899; }
+        .hero p { font-size: 18px; color: #4b5563; max-width: 600px; margin: 0 auto; }
+        
+        @media (min-width: 768px) {
+            .hero h2 { font-size: 42px; }
+        }
+        
+        /* Products */
+        .product-section { padding: 48px 0; }
+        .section-pink { background: linear-gradient(to bottom, #fdf2f8, white, #fdf2f8); }
+        .section-orange { background: linear-gradient(to right, #fff7ed, #fdf2f8, #faf5ff); }
+        .section-purple { background: linear-gradient(to right, #faf5ff, #fdf2f8, #f3e8ff); }
+        
+        .product-card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 24px;
+            border: 2px solid #fce7f3;
+            position: relative;
+        }
+        .card-pink { border-color: #fce7f3; }
+        .card-orange { border-color: #ffedd5; }
+        .card-purple { border-color: #f3e8ff; }
+        
+        .product-badge {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .badge-pink { background: #ec4899; }
+        .badge-orange { background: linear-gradient(to right, #f97316, #ec4899); }
+        .badge-purple { background: linear-gradient(to right, #8b5cf6, #ec4899); }
+        
+        .product-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            padding-top: 16px;
+        }
+        
+        @media (min-width: 768px) {
+            .product-content { flex-direction: row; }
+        }
+        
+        .product-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .img-pink { background: linear-gradient(to bottom right, #fce7f3, #fbcfe8); }
+        .img-orange { background: linear-gradient(to bottom right, #ffedd5, #fbcfe8); }
+        .img-purple { background: linear-gradient(to bottom right, #f3e8ff, #fbcfe8); }
+        
+        .product-image .icon { font-size: 48px; margin-bottom: 8px; }
+        .product-image .name { font-weight: bold; font-size: 16px; text-align: center; }
+        .img-pink .name { color: #be185d; }
+        .img-orange .name { color: #c2410c; }
+        .img-purple .name { color: #7c3aed; }
+        
+        .product-info { flex: 1; text-align: center; }
+        @media (min-width: 768px) { .product-info { text-align: left; } }
+        
+        .product-info h3 { font-size: 24px; font-weight: bold; color: #1f2937; margin-bottom: 8px; }
+        .product-info > p { color: #4b5563; margin-bottom: 20px; font-size: 16px; }
+        .product-info .highlight { font-weight: 600; margin-bottom: 16px; font-size: 14px; }
+        
+        .benefits-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+        @media (min-width: 640px) { .benefits-list { grid-template-columns: 1fr 1fr; } }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            text-align: left;
+            font-size: 14px;
+            color: #374151;
+        }
+        .benefit-item .check { color: #22c55e; font-size: 18px; flex-shrink: 0; }
+        .benefit-item .check-orange { color: #f97316; }
+        .benefit-item .check-purple { color: #8b5cf6; }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+        }
+        .cta-button:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        .cta-pink { background: linear-gradient(to right, #ec4899, #db2777); }
+        .cta-orange { background: linear-gradient(to right, #f97316, #ec4899); }
+        .cta-purple { background: linear-gradient(to right, #8b5cf6, #ec4899); }
+        
+        /* Features */
+        .features {
+            padding: 64px 0;
+            background: linear-gradient(to right, #ec4899, #db2777);
+            color: white;
+            text-align: center;
+        }
+        
+        .features h2 { font-size: 28px; font-weight: bold; margin-bottom: 8px; }
+        .features > .container > p { opacity: 0.9; margin-bottom: 48px; }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        @media (min-width: 768px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 28px;
+        }
+        
+        .feature-card h3 { font-size: 20px; font-weight: bold; margin-bottom: 8px; }
+        .feature-card p { opacity: 0.9; font-size: 14px; }
+        
+        /* CTA Section */
+        .cta-section { padding: 64px 0; background: white; text-align: center; }
+        .cta-section h2 { font-size: 28px; font-weight: bold; color: #1f2937; margin-bottom: 16px; }
+        .cta-section > .container > p { color: #4b5563; margin-bottom: 32px; font-size: 18px; }
+        
+        .cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+        
+        /* Footer */
+        footer { background: #111827; color: white; padding: 48px 0; }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+        }
+        @media (min-width: 768px) { .footer-content { flex-direction: row; justify-content: space-between; } }
+        
+        .footer-logo { display: flex; align-items: center; gap: 12px; }
+        .footer-logo img { width: 56px; height: 56px; border-radius: 50%; }
+        .footer-logo h3 { font-size: 18px; font-weight: bold; font-family: cursive; }
+        .footer-logo p { color: #9ca3af; font-size: 14px; }
+        
+        .footer-contact { text-align: center; }
+        @media (min-width: 768px) { .footer-contact { text-align: right; } }
+        .footer-contact p { color: #9ca3af; font-size: 14px; margin-bottom: 12px; }
+        
+        .footer-links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        @media (min-width: 768px) { .footer-links { justify-content: flex-end; } }
+        
+        .footer-links a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .footer-links .instagram { background: linear-gradient(to right, #8b5cf6, #ec4899, #f97316); }
+        .footer-links .whatsapp { background: #22c55e; }
+        
+        .footer-bottom {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo-section">
+                <img src="logo-beleza-saudavel.jpeg" alt="Beleza Saudável" class="logo-img" onerror="this.style.display='none'">
+                <div class="logo-text">
+                    <h1>Beleza Saudável</h1>
+                    <p>Cuidado natural para você</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/comunidade_beautiful?igsh=ZzRkNjJxdWVucTF2" target="_blank" rel="noopener noreferrer" class="instagram-btn" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+                </a>
+                <a href="https://wa.me/5515996925676" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" aria-label="WhatsApp">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span>❤️</span>
+                <span>Cuidado natural e eficaz</span>
+            </div>
+            <h2>Transforme sua <span>Beleza</span> de dentro para fora</h2>
+            <p>Descubra produtos selecionados para realçar sua beleza natural e promover saúde capilar com resultados comprovados.</p>
+        </div>
+    </section>
+
+    <!-- Product 1: Polivitamínico da Iza -->
+    <section class="product-section section-pink">
+        <div class="container">
+            <div class="product-card card-pink">
+                <div class="product-badge badge-pink">✨ DESTAQUE</div>
+                <div class="product-content">
+                    <div class="product-image img-pink">
+                        <span class="icon">💖</span>
+                        <span class="name">Poli da Iza</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Polivitamínico da Iza</h3>
+                        <p>O combo perfeito que seu cabelo precisa na dosagem certa! Suplemento 100% natural desenvolvido para transformar a saúde capilar.</p>
+                        <div class="benefits-list">
+                            <div class="benefit-item"><span class="check">✓</span><span>Acelera o crescimento capilar</span></div>
+                            <div class="benefit-item"><span class="check">✓</span><span>Fortalece os fios desde a raiz</span></div>
+                            <div class="benefit-item"><span class="check">✓</span><span>Reduz até 95% da queda</span></div>
+                            <div class="benefit-item"><span class="check">✓</span><span>Melhora a saúde de pele e unhas</span></div>
+                            <div class="benefit-item"><span class="check">✓</span><span>Contém Vitamina D e aminoácidos essenciais</span></div>
+                        </div>
+                        <a href="https://polivitaminicodaiza.com.br/?pv=pro1rw54&af=afi65y9x6l" target="_blank" rel="noopener noreferrer" class="cta-button cta-pink">
+                            🛒 Quero Conhecer o Produto
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 2: SEK da IZA -->
+    <section class="product-section section-orange">
+        <div class="container">
+            <div class="product-card card-orange">
+                <div class="product-badge badge-orange">🔥 NOVIDADE</div>
+                <div class="product-content">
+                    <div class="product-image img-orange">
+                        <span class="icon">🔥</span>
+                        <span class="name">SEK da IZA</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>SEK da IZA</h3>
+                        <p>Obtenha um corpo mais magro, uma barriga chapada e livre de retenção de líquidos, tudo de forma saudável. Cápsulas de fibra que proporcionam saciedade e auxiliam na gestão do peso.</p>
+                        <div class="benefits-list">
+                            <div class="benefit-item"><span class="check check-orange">✓</span><span>Aumento da saciedade e redução do peso</span></div>
+                            <div class="benefit-item"><span class="check check-orange">✓</span><span>Potencialização dos treinos e mais energia</span></div>
+                            <div class="benefit-item"><span class="check check-orange">✓</span><span>Melhor regulação da glicose</span></div>
+                            <div class="benefit-item"><span class="check check-orange">✓</span><span>Regulação do intestino</span></div>
+                            <div class="benefit-item"><span class="check check-orange">✓</span><span>Melhora da resistência física e recuperação muscular</span></div>
+                        </div>
+                        <a href="https://ev.braip.com/ref?pv=pro51ko3&af=afi07ep1e1" target="_blank" rel="noopener noreferrer" class="cta-button cta-orange">
+                            🛒 Quero Emagrecer com Saúde
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 3: DermaNattus -->
+    <section class="product-section section-purple">
+        <div class="container">
+            <div class="product-card card-purple">
+                <div class="product-badge badge-purple">⭐ QUERIDINHO</div>
+                <div class="product-content">
+                    <div class="product-image img-purple">
+                        <span class="icon">✨</span>
+                        <span class="name">DermaNattus</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>DermaNattus</h3>
+                        <p>Sua idade é apenas um número para o queridinho das famosas. Tratamento de dentro pra fora que ataca as causas do envelhecimento para uma pele rejuvenescida.</p>
+                        <p class="highlight" style="color: #8b5cf6;">✨ O queridinho das famosas para rejuvenescimento!</p>
+                        <div class="benefits-list">
+                            <div class="benefit-item"><span class="check check-purple">✓</span><span>Eficácia comprovada para o rejuvenescimento da pele</span></div>
+                            <div class="benefit-item"><span class="check check-purple">✓</span><span>Auxilia na formação do colágeno</span></div>
+                            <div class="benefit-item"><span class="check check-purple">✓</span><span>Rico em vitaminas, minerais e antioxidantes</span></div>
+                            <div class="benefit-item"><span class="check check-purple">✓</span><span>Registrado e aprovado pela Anvisa</span></div>
+                            <div class="benefit-item"><span class="check check-purple">✓</span><span>100% natural, Zero Glúten e Zero Açúcar</span></div>
+                        </div>
+                        <a href="https://ev.braip.com/ref?pv=prod323k&af=afig57gqn1" target="_blank" rel="noopener noreferrer" class="cta-button cta-purple">
+                            🛒 Quero Rejuvenescer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Por que escolher nossos produtos?</h2>
+            <p>Comprometidos com sua beleza e saúde</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>100% Natural</h3>
+                    <p>Produtos com ingredientes naturais e selecionados</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Resultados Comprovados</h3>
+                    <p>Milhares de clientes satisfeitos com resultados reais</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">❤️</div>
+                    <h3>Atendimento Personalizado</h3>
+                    <p>Suporte dedicado para tirar todas as suas dúvidas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Pronta para transformar sua vida?</h2>
+            <p>Escolha o produto ideal para você e comece sua jornada de transformação hoje mesmo!</p>
+            <div class="cta-buttons">
+                <a href="https://polivitaminicodaiza.com.br/?pv=pro1rw54&af=afi65y9x6l" target="_blank" rel="noopener noreferrer" class="cta-button cta-pink">💖 Poli da Iza</a>
+                <a href="https://ev.braip.com/ref?pv=pro51ko3&af=afi07ep1e1" target="_blank" rel="noopener noreferrer" class="cta-button cta-orange">🔥 SEK da IZA</a>
+                <a href="https://ev.braip.com/ref?pv=prod323k&af=afig57gqn1" target="_blank" rel="noopener noreferrer" class="cta-button cta-purple">✨ DermaNattus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo-beleza-saudavel.jpeg" alt="Beleza Saudável" onerror="this.style.display='none'">
+                    <div>
+                        <h3>Beleza Saudável</h3>
+                        <p>Cuidado natural para você</p>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <p>Entre em contato conosco:</p>
+                    <div class="footer-links">
+                        <a href="https://www.instagram.com/comunidade_beautiful?igsh=ZzRkNjJxdWVucTF2" target="_blank" rel="noopener noreferrer" class="instagram">
+                            📷 @comunidade_beautiful
+                        </a>
+                        <a href="https://wa.me/5515996925676" target="_blank" rel="noopener noreferrer" class="whatsapp">
+                            📱 (15) 99692-5676
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Beleza Saudável. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
